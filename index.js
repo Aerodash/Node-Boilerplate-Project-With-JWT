@@ -6,12 +6,14 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // DB Setup
 mongoose.connect('mongodb://ahmed:98578652@ds145039.mlab.com:45039/react-authentication');
 
 // App Setup
 app.use(morgan('combined')); // morgan is 0for logging
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));// convert every request to json
 router(app);
 
